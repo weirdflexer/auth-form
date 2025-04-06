@@ -5,7 +5,7 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/auth-form/",
+  base: "/auth-form",
   plugins: [
     react(),
     createSvgIconsPlugin({
