@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://weirdflexer.github.io/auth-form/",
   "scripts": {
     "dev": "vite --host",
     "predeploy": "npm run build",
