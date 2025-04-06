@@ -1,0 +1,214 @@
+@use "helpers" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  height: 100% !important;
+  font: var(--base-font-weight) var(--base-font-size) / var(--base-line-height)
+    var(--base-font-family);
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: var(--site-min-width);
+  min-height: inherit;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font: inherit;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  scroll-behavior: smooth;
+}
+
+#root,
+.app {
+  height: inherit;
+  min-height: inherit;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+template,
+#svg-sprite {
+  display: none !important;
+}
+
+#svg-sprite {
+  symbol {
+    &,
+    * {
+      fill: currentColor;
+    }
+  }
+}
+
+svg {
+  display: block;
+  fill: currentColor;
+}
+
+a,
+button {
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 100%;
+  color: var(--color-light);
+
+  @include hover {
+    color: var(--color-accent);
+  }
+
+  @mixin focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  html.safari &:focus {
+    @include mobile {
+      outline: none;
+    }
+  }
+}
+
+a {
+  text-underline-offset: 2px;
+  text-decoration-thickness: from-font;
+}
+
+svg,
+svg *,
+a,
+button,
+input,
+textarea,
+label,
+::before,
+::after,
+::placeholder {
+  @include transition;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+p,
+ul,
+ol,
+img,
+blockquote {
+  &:not([class]) {
+    --marginY: 0.5em;
+  }
+}
+
+@mixin list-items {
+  --marginY: 0.1em;
+}
+
+p,
+ul,
+ol,
+li,
+li ol,
+li ul,
+img,
+blockquote {
+  &:not([class]) {
+    &:not(:last-child) {
+      margin-bottom: var(--marginY);
+    }
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+ol:not([class]) ul,
+ul:not([class]) ul,
+ol:not([class]) {
+  margin-left: 16px;
+}
+
+ol:not([class]),
+ul:not([class]) {
+  ul,
+  ol {
+    margin-top: var(--marginY);
+  }
+}
+
+ol {
+  &:not([class]) {
+    list-style-type: decimal-leading-zero;
+
+    li {
+      padding-left: 0.25em;
+
+      &::marker {
+        color: var(--c-accent);
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+ul {
+  --markerIconSize: 3px;
+
+  &:not([class]) {
+    & > li::before {
+      content: "";
+      display: inline-flex;
+      margin-left: 0.35em;
+      margin-right: 0.75em;
+      vertical-align: middle;
+    }
+
+    li::before {
+      @include square(var(--markerIconSize));
+
+      background-color: currentColor;
+      border-radius: 50%;
+    }
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+
+  &__button {
+    position: absolute;
+    z-index: var(--layer-tooltip);
+    bottom: 0;
+    right: calc(var(--input-padding-x) / 2);
+    width: var(--input-button-width);
+  }
+
+  & ~ .input {
+    padding-right: calc(var(--input-padding-x) / 2 + var(--input-button-width));
+  }
+}

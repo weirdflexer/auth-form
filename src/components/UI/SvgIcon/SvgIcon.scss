@@ -1,0 +1,10 @@
+@use "../../../styles/helpers" as *;
+
+.svg-icon {
+  --size: 1em;
+  --color: var(--color-light);
+  @include flex-center(true);
+  @include square(var(--size));
+
+  color: var(--color);
+}

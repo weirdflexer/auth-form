@@ -1,0 +1,89 @@
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin img-contain($size: 100%) {
+  @include square($size);
+
+  object-fit: contain;
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin abs-x {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
+
+@mixin abs-y {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+@mixin square($size: 100%) {
+  width: $size;
+  height: $size;
+}
+
+@mixin reset-button {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  appearance: none;
+}
+
+@mixin scale($scale: 1.025) {
+  transform: scale(&scale) translateZ(0);
+}
+
+@mixin abs-cover {
+  @include square;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@mixin transition($prop: var(--transition-duration)) {
+  .is-dom-ready & {
+    transition: $prop;
+  }
+}
+
+@mixin text-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin grid-center {
+  display: grid;
+  place-items: center;
+}

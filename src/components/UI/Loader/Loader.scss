@@ -1,0 +1,45 @@
+@use "../../../styles/helpers" as *;
+
+.loader {
+  @include abs-cover;
+  @include transition("opacity 0.2s ease-in-out, visibility 2s ease-in-out");
+
+  z-index: var(--layer-loader);
+  cursor: wait;
+  user-select: none;
+
+  &:not(.is-shown) {
+    @include hide;
+  }
+
+  &__inner {
+    @include square(200px);
+    @include abs-center;
+
+    z-index: 20;
+    backface-visibility: hidden;
+    transition: inherit;
+  }
+
+  &__circle {
+    @include abs-cover;
+
+    position: absolute;
+    border: 10px solid var(--color-accent);
+    border-radius: 50%;
+    opacity: 0;
+
+    &--main {
+      animation: loader-before 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+    }
+
+    &--extra {
+      animation: loader-after 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s
+        infinite;
+    }
+  }
+
+  * {
+    pointer-events: none;
+  }
+}

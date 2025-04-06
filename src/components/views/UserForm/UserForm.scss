@@ -1,0 +1,11 @@
+.user-form {
+  position: relative;
+  max-width: 300px;
+  margin-inline: auto;
+
+  &__submit-button {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

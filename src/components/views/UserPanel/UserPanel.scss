@@ -1,0 +1,58 @@
+@use "../../../styles/helpers" as *;
+
+.user-panel {
+  $imageSize: 36px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  @include mobile {
+    $imageSize: 30px;
+
+    font-size: 14px;
+  }
+
+  &__name {
+    @include text-overflow;
+
+    max-width: 360px;
+
+    @include tablet {
+      max-width: 360px;
+    }
+
+    @include mobile {
+      max-width: 200px;
+    }
+  }
+
+  &__image-wrapper {
+    @include flex-center;
+    @include square($imageSize);
+
+    flex-shrink: 0;
+    background-color: var(--color-light);
+    border: 3px outset var(--color-accent);
+    border-radius: 50%;
+  }
+
+  &__image {
+    $size: 65%;
+
+    @include img-contain(65%);
+  }
+
+  &__sign-out-button {
+    width: auto;
+    border-radius: var(--border-radius);
+    #{&} {
+      --maxWidth: $imageSize;
+      --height: $imageSize;
+      --paddingX: 0;
+      --borderWidth: 2px;
+    }
+  }
+}

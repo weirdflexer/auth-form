@@ -1,0 +1,54 @@
+@use "../../../styles/helpers" as *;
+
+.input {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  height: var(--input-height);
+  padding: var(--input-padding);
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  border: 3px outset var(--color-accent);
+  border-radius: var(--border-radius);
+  filter: drop-shadow(0 0 0 transparent);
+
+  &::placeholder {
+    color: var(--color-gray);
+  }
+
+  @include hover {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    border-color: var(--color-accent);
+    filter: drop-shadow(var(--box-shadow-2));
+
+    &::placeholder {
+      color: var(--color-gray);
+    }
+  }
+
+  &:focus {
+    border-color: var(--color-accent-2);
+  }
+
+  &[disabled],
+  &[readonly] {
+    color: var(--color-dark);
+    background-color: var(--color-gray-2);
+    border-color: var(--color-gray-2);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+
+  &::placeholder {
+    color: var(--color-gray);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &.is-invalid {
+    filter: drop-shadow(0 0 0px var(--color-red));
+  }
+}

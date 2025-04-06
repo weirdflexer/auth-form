@@ -1,0 +1,13 @@
+@use "../../../styles/helpers" as *;
+
+.content {
+  @include grid-center;
+
+  flex-grow: 1;
+  padding-block: 30px;
+
+  &__body {
+    height: 100%;
+    max-width: 500px;
+  }
+}

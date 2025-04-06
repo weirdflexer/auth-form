@@ -1,0 +1,141 @@
+@use "../../../styles/helpers" as *;
+
+.button {
+  $rippleOffsetX: 0;
+  $rippleOffsetY: 0;
+
+  --iconSize: 1em;
+  --iconColor: var(--color-light);
+
+  @include reset-button;
+  @include flex-center(true);
+
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  height: var(--input-height);
+  padding-inline: 16px;
+  text-decoration: none;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  border: 3px outset var(--color-accent);
+  border-radius: var(--border-radius);
+  filter: drop-shadow(none);
+  will-change: transform;
+  cursor: pointer;
+
+  &::before {
+    @include square(0.5px);
+
+    content: "";
+    position: absolute;
+    left: $rippleOffsetX;
+    top: $rippleOffsetY;
+    background-color: transparent;
+    border-radius: 50%;
+    transform-origin: 0 0;
+    pointer-events: none;
+
+    .is-ripple {
+      &:not(.is-animation-end)#{&} {
+        background-color: var(--color-accent);
+        animation: ripple 0.8s ease-in;
+      }
+    }
+  }
+
+  @include hover {
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    border-color: var(--color-accent);
+    filter: drop-shadow(var(--box-shadow-2));
+  }
+
+  &:focus {
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    border-color: var(--color-accent-2);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+
+  &:active {
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    border-color: var(--color-accent-2);
+    filter: drop-shadow(0 0 0 transparent);
+
+    &:not([disabled]) {
+      @include scale;
+    }
+
+    .button__icon {
+      color: var(--color-light);
+    }
+  }
+
+  &[disabled] {
+    color: var(--color-dark);
+    background-color: var(--color-gray-2);
+    border-color: var(--color-gray-2);
+    filter: drop-shadow(0 0 0 transparent);
+    cursor: not-allowed;
+  }
+
+  &--only-icon {
+    --width: auto;
+    --paddingX: 0;
+  }
+
+  &--transparent {
+    --iconColor: var(--color-dark);
+    --iconSize: 1.35rem;
+    color: var(--color-dark);
+    background: transparent;
+    border: none;
+
+    @include hover {
+      color: var(--color-accent);
+      background-color: transparent;
+      filter: drop-shadow(0 0 0 transparent);
+
+      .button__icon {
+        color: var(--color-accent);
+      }
+    }
+
+    &:focus {
+      color: var(--color-dark);
+      background-color: transparent;
+
+      .button__icon {
+        color: var(--color-dark);
+      }
+    }
+
+    &:active {
+      color: var(--color-accent);
+      background-color: transparent;
+
+      .button__icon {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &__body {
+    @include flex-center;
+    @include square;
+
+    width: auto;
+    position: relative;
+    z-index: 1;
+    column-gap: 0.5em;
+    pointer-events: none;
+  }
+
+  &__icon {
+    --size: var(--iconSize);
+    --color: var(--iconColor);
+  }
+}

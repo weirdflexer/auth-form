@@ -1,0 +1,19 @@
+@use "../../../styles/helpers" as *;
+
+.logo {
+  padding: 8px;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-style: italic;
+  text-align: center;
+  border: 2px solid var(--color-light);
+  border-radius: var(--border-radius);
+
+  @include mobile {
+    padding: 8px;
+    font-size: 9px;
+  }
+}

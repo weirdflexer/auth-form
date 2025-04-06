@@ -1,0 +1,14 @@
+.footer {
+  box-shadow: var(--box-shadow-4);
+
+  &__inner {
+    display: flex;
+    justify-content: flex-end;
+    padding-block: 10px;
+  }
+
+  &__copyright-link {
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
