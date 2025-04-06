@@ -29,7 +29,7 @@ const Header: FC<IHeader> = (props) => {
         {isAuth && email ? (
           <UserPanel className="header__logo" name={email} />
         ) : (
-          <div>
+          <div className="header__actions">
             {isNotAuthURL && (
               <Button
                 className="header__button"

@@ -2,7 +2,7 @@ import { FC, ReactNode, useState } from "react";
 import { useUserForm } from "../../../hooks/useUserForm";
 import { useFormik } from "formik";
 import { AppRoute, AuthStatus } from "../../../types/const";
-import { UserCredential, Auth } from "@firebase/auth";
+import { UserCredential, Auth } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { useUserStore } from "../../../store/userStore";
 import { useStatusStore } from "../../../store/statusStore";
